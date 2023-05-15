@@ -1,0 +1,21 @@
+---
+- name: wget file
+  become: yes
+  shell: wget https://downloads.mysql.com/archives/get/p/23/file/mysql-server_8.0.23-1debian10_amd64.deb-bundle.tar /home &2>/dev/null
+
+- name: untar file
+  become: yes
+  unarchive:
+    src: "/home/mysql-server_8.0.23-1debian10_amd64.deb-bundle.tar"
+    dest: "/home/"
+    remote_src: true
+
+- name: install required package
+  apt:
+    name: xz-utils
+    state: latest
+
+- name: install mysql
+  become: yes
+  apt:
+    deb: "/home/mysql-community-server_8.0.23-1debian10_amd64.deb"

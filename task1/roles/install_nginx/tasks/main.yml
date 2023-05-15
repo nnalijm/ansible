@@ -1,0 +1,14 @@
+---
+# tasks file for install_nginx
+- name: installing nignx
+  apt:
+    name: nginx
+    state: latest
+
+- name: change html
+  shell: lsb_release -a 2> /dev/null | awk -F ":" '{printf $2"<br>"}' > /var/www/html/index.html
+
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted

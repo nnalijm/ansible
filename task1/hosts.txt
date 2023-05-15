@@ -1,0 +1,9 @@
+[mysql_server]
+mysql ansible_host=134.122.65.192
+
+[nginx_server]
+nginx ansible_host=134.122.75.10
+
+[servers]
+nginx_1 ansible_host=134.122.75.10
+mysql_1 ansible_host=134.122.65.192

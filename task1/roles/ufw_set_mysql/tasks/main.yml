@@ -1,0 +1,6 @@
+---
+# tasks file for ufw_set_mysql
+- name: allow 3306(mysql) port
+  ufw:
+    port: 3306
+    rule: allow

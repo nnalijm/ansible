@@ -1,0 +1,15 @@
+---
+- name: installing and configuring ufw
+  apt:
+    name: ufw
+    state: latest
+
+- name: deny access
+  ufw:
+    state: enabled
+    policy: deny
+
+- name: access 22(ssh) port
+  ufw:
+    port: 22
+    rule: allow

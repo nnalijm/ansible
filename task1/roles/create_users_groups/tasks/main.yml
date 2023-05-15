@@ -1,0 +1,31 @@
+---
+# tasks file for create_users_folders
+- name: create groups
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - adam
+    - bob
+
+- name: create users adam bob
+  vars:
+    password: "1234"
+  user:
+    name: "{{ item }}"
+    create_home: true
+    group: "{{ item }}"
+    shell: /bin/bash
+    password: "{{ password | password_hash('sha512') }}"
+  with_items:
+    - adam
+    - bob
+- name: create sudo-user chris
+  vars:
+    password: "1234"
+  user:
+    name: chris
+    create_home: true
+    group: sudo
+    shell: /bin/bash
+    password: "{{ password | password_hash('sha512') }}"

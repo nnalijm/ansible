@@ -1,0 +1,10 @@
+---
+# tasks file for copy_keys
+- name: copy public ssh keys
+  authorized_key:
+    user: "{{ item }}"
+    state: present
+    key: "{{ lookup('file', '/home/wm/.ssh/keys/mysql/mysql_{{ item }}.pub')}}"
+  with_items: 
+    - adam
+    - bob
