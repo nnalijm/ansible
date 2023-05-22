@@ -1,0 +1,13 @@
+---
+
+users:
+  - name: 'adam'
+    group: 'adam'
+  - name: 'bob'
+    group: 'bob'
+  - name: 'chris'
+    group: 'chris'
+
+chris:
+  - name: 'chris'
+    group: 'sudo'

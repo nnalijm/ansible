@@ -1,0 +1,24 @@
+---
+# tasks file for copy_ssh_keys
+- block:
+    - name: copy ssh keys into the nginx server
+      authorized_key:
+        user: "{{ user }}"
+        state: present
+        key: "{{ lookup('file', '{{ nginx_path }}_{{ user }}.pub')}}"
+      loop: "{{ users }}"
+      loop_control:
+        loop_var: user
+      notify: restart ssh
+  when: ansible_nodename == "nginx-server-1"
+- block:
+    - name: copy ssh keys into the mysql server
+      authorized_key:
+        user: "{{ user }}"
+        state: present
+        key: "{{ lookup('file', '{{ mysql_path }}_{{ user }}.pub')}}"
+      loop: "{{ users }}"
+      loop_control:
+        loop_var: user
+      notify: restart ssh
+  when: ansible_nodename == "mysql-server-1"

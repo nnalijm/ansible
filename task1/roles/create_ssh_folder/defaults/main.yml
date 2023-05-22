@@ -1,0 +1,18 @@
+---
+# defaults file for create_ssh_folder
+
+names:
+  - adam
+  - bob
+  - chris
+
+users_data:
+  - path: '/home/adam'
+    name: 'adam'
+    group: 'adam'
+  - path: '/home/bob'
+    name: 'bob'
+    group: 'bob'
+  - path: '/home/chris'
+    name: 'chris'
+    group: 'chris'

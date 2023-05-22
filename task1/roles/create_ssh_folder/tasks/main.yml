@@ -1,0 +1,21 @@
+---
+# tasks file for create_ssh_folder
+- name: create ssh folder
+  file: 
+    path: "{{ data.path }}/.ssh"
+    state: directory
+    owner: "{{ data.name }}"
+    group: "{{ data.group }}"
+  loop: "{{ users_data }}"
+  loop_control:
+    loop_var: data
+
+- name: create authorized_keys file
+  file:
+    path: "/home/{{ name }}/.ssh/authorized_keys"
+    state: touch
+    owner: "{{ name }}"
+    group: "{{ name }}"
+  loop: "{{ names }}"
+  loop_control:
+    loop_var: name

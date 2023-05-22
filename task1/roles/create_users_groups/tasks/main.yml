@@ -1,0 +1,28 @@
+---
+# tasks file for create_users_groups
+
+- name: create groups
+  group:
+    name: "{{ user.group }}"
+    state: present
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: user
+
+- name: create users
+  user:
+    name: "{{ user.name }}"
+    createhome: true
+    group: "{{ user.group }}"
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: user
+
+- name: give sudo privileges user chris
+  user:
+    name: "{{ user.name }}"
+    append: true
+    groups: "{{ user.group }}"
+  loop: "{{ chris }}"
+  loop_control:
+    loop_var: user

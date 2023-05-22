@@ -1,0 +1,5 @@
+---
+# defaults file for setup_nginx
+
+source_file: index.html.j2 
+dest_folder: /var/www/html

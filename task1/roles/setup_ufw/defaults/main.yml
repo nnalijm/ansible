@@ -1,0 +1,10 @@
+---
+# defaults file for setup_ufw
+
+nginx_ports:
+  - '22'
+  - '80'
+  - '443'
+mysql_ports:
+  - '22'
+  - '3306'

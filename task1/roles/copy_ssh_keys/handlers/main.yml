@@ -1,0 +1,7 @@
+---
+# handlers file for copy_ssh_keys
+
+- name: restart ssh
+  service:
+    name: ssh
+    state: restarted  

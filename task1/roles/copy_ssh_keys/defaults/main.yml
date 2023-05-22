@@ -1,0 +1,9 @@
+---
+# defaults file for copy_ssh_keys
+
+users:
+  - adam
+  - bob
+  - chris
+nginx_path: /home/wm/.ssh/keys/nginx/nginx
+mysql_path: /home/wm/.ssh/keys/mysql/mysql

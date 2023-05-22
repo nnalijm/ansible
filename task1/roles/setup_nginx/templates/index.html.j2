@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Title of nginx server</title>
+</head>
+<body>
+	<center>	
+		This is nginx server<br>
+		Description of nginx server:<br>
+		{{ ansible_lsb.description }}<br>
+		Vendor: {{ ansible_system_vendor }}<br>
+		Server ip address: {{ ansible_eth0.ipv4.address }}
+	</center>
+</body>
+</html>

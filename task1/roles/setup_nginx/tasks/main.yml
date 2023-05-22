@@ -1,0 +1,16 @@
+---
+# tasks file for setup_nginx
+
+- block:
+    - name: setup nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: change html
+      template:
+        src: "{{ source_file }}"
+        dest: "{{ dest_folder }}/index.html"
+        mode: '0555'
+      notify: restart nginx
+  when: ansible_nodename == "nginx-server-1"

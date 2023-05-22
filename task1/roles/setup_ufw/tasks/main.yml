@@ -1,0 +1,34 @@
+---
+# tasks file for setup_ufw
+
+- name: install ufw
+  apt:
+    name: ufw
+    state: latest
+
+- block:
+    - name: deny all ports
+      ufw:
+        policy: deny
+    - name: allow ssh, http/https ports
+      ufw:
+        port: "{{ port }}"
+        rule: allow
+      loop: "{{ nginx_ports }}"
+      loop_control:
+        loop_var: port
+      notify: restart ufw
+  when: ansible_nodename == "nginx-server-1"
+- block:
+    - name: deny all ports
+      ufw:
+        policy: deny
+    - name: allow ssh, mysql ports
+      ufw:
+        port: "{{ port }}"
+        rule: allow
+      loop: "{{ mysql_ports }}"
+      loop_control:
+        loop_var: port
+      notify: restart ufw
+  when: ansible_nodename == "mysql-server-1"
