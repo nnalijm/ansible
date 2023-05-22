@@ -1,22 +1,11 @@
 ---
-- hosts: servers
-  become: yes
+# tasks file for create_users_groups
+- name: adawdadw
+  hosts: servers
+  become: true
   roles:
-    - update_upgrade
-    - create_users_groups
-    - create_ssh_folder
-    - setup_ufw
-
-- hosts: nginx_server
-  become: yes
-  roles:
-    - copy_nginx_keys
-    - ufw_set_nginx
-    - install_nginx
-
-- hosts: mysql_server
-  become: yes
-  roles:
-    - copy_mysql_keys
-    - ufw_set_mysql
-    - install_mysql
+    #- create_users_groups
+    #- create_ssh_folder
+    #- copy_ssh_keys
+    #- setup_ufw
+    - setup_nginx
