@@ -4,8 +4,8 @@
   hosts: servers
   become: true
   roles:
-    #- create_users_groups
-    #- create_ssh_folder
-    #- copy_ssh_keys
-    #- setup_ufw
+    - create_users_groups
+    - create_ssh_folder
+    - copy_ssh_keys
+    - setup_ufw
     - setup_nginx
